@@ -2,6 +2,10 @@
   box-sizing: border-box;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 html,
 body {
   margin: 0;
@@ -11,12 +15,35 @@ body {
   color: #333;
 }
 
-/* The drop zone fills the window, with a margin that grows on bigger screens. */
+/* Each page fills the window, with a margin that grows on bigger screens. */
 main {
   height: 100vh;
   height: 100dvh;
   padding: clamp(16px, 5vmin, 64px);
 }
+
+.button {
+  font: inherit;
+  font-size: 1.25rem;
+  font-weight: 600;
+  padding: 14px 40px;
+  border: none;
+  border-radius: 10px;
+  background: #2b7cff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.button:hover {
+  background: #1a66e0;
+}
+
+.button:focus-visible {
+  outline: 3px solid #9cc2ff;
+  outline-offset: 3px;
+}
+
+/* ---------- Upload page ---------- */
 
 .drop-zone {
   width: 100%;
@@ -32,27 +59,6 @@ main {
 .drop-zone.dragging {
   border-color: #2b7cff;
   background: #f3f8ff;
-}
-
-.upload-button {
-  font: inherit;
-  font-size: 1.25rem;
-  font-weight: 600;
-  padding: 14px 40px;
-  border: none;
-  border-radius: 10px;
-  background: #2b7cff;
-  color: #fff;
-  cursor: pointer;
-}
-
-.upload-button:hover {
-  background: #1a66e0;
-}
-
-.upload-button:focus-visible {
-  outline: 3px solid #9cc2ff;
-  outline-offset: 3px;
 }
 
 /* Only the button is laid out, so it sits in the exact center; the hint hangs below it. */
@@ -79,4 +85,62 @@ main {
   .hint {
     display: none;
   }
+}
+
+/* ---------- Animation page ---------- */
+
+.player {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+/* The stage takes all space left over by the controls; the frame scales to fit it. */
+.stage {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+}
+
+.frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.play-button {
+  min-width: 160px;
+  display: flex;
+  justify-content: center;
+}
+
+.play-button svg {
+  width: 28px;
+  height: 28px;
+  fill: currentColor;
+}
+
+.fps {
+  width: min(400px, 100%);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.fps input {
+  flex: 1;
+  accent-color: #2b7cff;
+}
+
+.fps span {
+  min-width: 4.5em;
+  text-align: right;
+}
+
+.fps:has(input:disabled) {
+  opacity: 0.4;
 }

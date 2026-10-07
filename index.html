@@ -10,10 +10,24 @@
   <main>
     <section id="drop-zone" class="drop-zone">
       <div class="upload">
-        <button id="upload-button" class="upload-button" type="button">Upload</button>
+        <button id="upload-button" class="button" type="button">Upload</button>
         <p class="hint">or drag images here</p>
       </div>
       <input id="file-input" type="file" accept="image/*" multiple hidden>
+    </section>
+
+    <section id="player" class="player" hidden>
+      <div class="stage">
+        <img id="frame" class="frame" alt="Animation frame">
+      </div>
+      <button id="play-button" class="button play-button" type="button" aria-label="Play">
+        <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4.5v15l12.5-7.5z"/></svg>
+        <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true" hidden><rect x="5.5" y="4.5" width="4.5" height="15" rx="1"/><rect x="14" y="4.5" width="4.5" height="15" rx="1"/></svg>
+      </button>
+      <label class="fps">
+        <input id="fps-slider" type="range" min="1" max="30" value="2" disabled>
+        <span id="fps-value">2 FPS</span>
+      </label>
     </section>
   </main>
   <script src="app.js"></script>
