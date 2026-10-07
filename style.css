@@ -1,0 +1,82 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+  background: #fff;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: #333;
+}
+
+/* The drop zone fills the window, with a margin that grows on bigger screens. */
+main {
+  height: 100vh;
+  height: 100dvh;
+  padding: clamp(16px, 5vmin, 64px);
+}
+
+.drop-zone {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px dashed #b0b0b0;
+  border-radius: 16px;
+  transition: border-color 0.15s, background-color 0.15s;
+}
+
+.drop-zone.dragging {
+  border-color: #2b7cff;
+  background: #f3f8ff;
+}
+
+.upload-button {
+  font: inherit;
+  font-size: 1.25rem;
+  font-weight: 600;
+  padding: 14px 40px;
+  border: none;
+  border-radius: 10px;
+  background: #2b7cff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.upload-button:hover {
+  background: #1a66e0;
+}
+
+.upload-button:focus-visible {
+  outline: 3px solid #9cc2ff;
+  outline-offset: 3px;
+}
+
+/* Only the button is laid out, so it sits in the exact center; the hint hangs below it. */
+.upload {
+  position: relative;
+}
+
+.hint {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  margin: 12px 0 0;
+  white-space: nowrap;
+  color: #888;
+}
+
+/* Touch devices (phones, tablets) can't drag files in, so show only the button. */
+@media (hover: none) and (pointer: coarse) {
+  .drop-zone {
+    border-color: transparent;
+  }
+
+  .hint {
+    display: none;
+  }
+}
